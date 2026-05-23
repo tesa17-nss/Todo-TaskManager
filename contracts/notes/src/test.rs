@@ -16,6 +16,9 @@ mod tests {
         (env, client, admin)
     }
 
+    // -------------------------------------------------------
+    // Test: init tidak bisa dipanggil dua kali
+    // -------------------------------------------------------
     #[test]
     fn test_init_twice() {
         let (env, client, _admin) = setup();
@@ -24,7 +27,9 @@ mod tests {
         assert_eq!(result, String::from_str(&env, "Kontrak sudah diinisialisasi"));
     }
 
-
+    // -------------------------------------------------------
+    // Test: create todo berhasil
+    // -------------------------------------------------------
     #[test]
     fn test_create_todo() {
         let (env, client, _admin) = setup();
@@ -42,6 +47,9 @@ mod tests {
         assert_eq!(todos.get(0).unwrap().id, 1);
     }
 
+    // -------------------------------------------------------
+    // Test: get_todo by id
+    // -------------------------------------------------------
     #[test]
     fn test_get_todo_by_id() {
         let (env, client, _admin) = setup();
@@ -57,6 +65,9 @@ mod tests {
         assert_eq!(todo.unwrap().title, String::from_str(&env, "Task A"));
     }
 
+    // -------------------------------------------------------
+    // Test: get_todo id yang tidak ada → None
+    // -------------------------------------------------------
     #[test]
     fn test_get_todo_not_found() {
         let (_env, client, _admin) = setup();
@@ -64,6 +75,9 @@ mod tests {
         assert!(todo.is_none());
     }
 
+    // -------------------------------------------------------
+    // Test: update status
+    // -------------------------------------------------------
     #[test]
     fn test_update_status() {
         let (env, client, _admin) = setup();
@@ -81,6 +95,9 @@ mod tests {
         assert_eq!(todo.status, Status::InProgress);
     }
 
+    // -------------------------------------------------------
+    // Test: update priority
+    // -------------------------------------------------------
     #[test]
     fn test_update_priority() {
         let (env, client, _admin) = setup();
@@ -98,6 +115,9 @@ mod tests {
         assert_eq!(todo.priority, Priority::High);
     }
 
+    // -------------------------------------------------------
+    // Test: delete todo
+    // -------------------------------------------------------
     #[test]
     fn test_delete_todo() {
         let (env, client, _admin) = setup();
@@ -115,6 +135,9 @@ mod tests {
         assert_eq!(client.get_todos().len(), 0);
     }
 
+    // -------------------------------------------------------
+    // Test: delete id yang tidak ada
+    // -------------------------------------------------------
     #[test]
     fn test_delete_not_found() {
         let (env, client, _admin) = setup();
@@ -122,6 +145,9 @@ mod tests {
         assert_eq!(result, String::from_str(&env, "Todo tidak ditemukan"));
     }
 
+    // -------------------------------------------------------
+    // Test: id counter sequential (bukan random)
+    // -------------------------------------------------------
     #[test]
     fn test_id_sequential() {
         let (env, client, _admin) = setup();

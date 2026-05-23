@@ -52,7 +52,7 @@ Only the admin wallet that initialized the contract can modify data. Anyone can 
 | Property | Value |
 |---|---|
 | Network | Stellar Testnet |
-| Contract ID | `CBTPU3DRPIK6HAYTJSO22ZE52EHSAVXPTBLFSTXONECYGBTZ754KLIAF` |
+| Contract ID | `CDAX7ZUN4TDYVWRZI3QJS2LCT2KVOK2M5TDSPDGYFAVQDYNF6HAPWJAQ` |
 | Horizon URL | `https://horizon-testnet.stellar.org` |
 | Stellar Lab | `https://lab.stellar.org` |
 | Language | Rust (`no_std`) |
